@@ -154,17 +154,17 @@ def calc(update, context):
     user_text: str = update.message.text[6:].strip()
     var1, var2 = '', ''
 
-    for i in range(len(user_text)):
-        if not user_text[i].isdigit():
+    for i in user_text:
+        if not i.isdigit():
             break
         else:
-            var1 += user_text[i]
+            var1 += i
 
-    for i in range(len(user_text)-1, -1, -1):
-        if not user_text[i].isdigit():
+    for i in user_text[::-1]:
+        if not i.isdigit():
             break
         else:
-            var2 += user_text[i]
+            var2 += i
 
     res: list = list(map(int, [var1, (var2)[::-1]]))
     oper: str = ''.join(set(user_text) - set(var1+var2))
